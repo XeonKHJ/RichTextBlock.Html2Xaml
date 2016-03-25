@@ -161,7 +161,7 @@ namespace html2xaml
             {
 
 
-                var xsldocument = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///RichTextBlock.Html2Xaml/RichTextBlockHtml2Xaml.xslt"));
+                var xsldocument = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///html2xaml/RichTextBlockHtml2Xaml.xslt"));
 
                 XmlDocument html2Xamlxsldoc = await XmlDocument.LoadFromFileAsync(xsldocument);
 

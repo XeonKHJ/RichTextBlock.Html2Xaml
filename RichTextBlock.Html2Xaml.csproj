@@ -7,7 +7,7 @@
     <ProjectGuid>{D3408113-4EF7-4056-9EC9-D383306514B8}</ProjectGuid>
     <OutputType>winmdobj</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RichTextBlock.Html2Xaml</RootNamespace>
+    <RootNamespace>html2xaml</RootNamespace>
     <AssemblyName>RichTextBlock.Html2Xaml</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
@@ -112,13 +112,18 @@
     <Compile Include="RichTextBlockProperties.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="RichTextBlockHtml2Xaml.xslt" />
-    <Content Include="Test\Test.html" />
+    <Content Include="RichTextBlockHtml2Xaml.xslt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Test\Test.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Test\Test.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
