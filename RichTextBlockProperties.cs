@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 using Windows.Data.Xml.Dom;
 using Windows.Data.Xml.Xsl;
@@ -9,12 +12,12 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Documents;
 using Windows.UI.Xaml.Markup;
 
-namespace WinRT_RichTextBlock.Html2Xaml
+namespace html2xaml
 {
     /// <summary>
     /// Usage: 
     /// 1) In a XAML file, declare the above namespace, e.g.:
-    ///    xmlns:common="using:WinRT_RichTextBlock.Html2Xaml"
+    ///    xmlns:common="using:RichTextBlock.Html2Xaml"
     ///     
     /// 2) In RichTextBlock controls, set or databind the Html property, e.g.:
     /// 
@@ -35,10 +38,10 @@ namespace WinRT_RichTextBlock.Html2Xaml
     ///       </common:Properties.Html>
     ///    </RichTextBlock>
     /// </summary>
-    public class Properties : DependencyObject
+    public sealed class Properties : DependencyObject
     {
-        public static readonly DependencyProperty HtmlProperty =
-            DependencyProperty.RegisterAttached("Html", typeof(string), typeof(Properties), new PropertyMetadata(null, HtmlChanged));
+        public static DependencyProperty HtmlProperty { get { return DependencyProperty.RegisterAttached("Html", typeof(string), typeof(Properties), new PropertyMetadata(null, HtmlChanged)); } }
+
 
         public static void SetHtml(DependencyObject obj, string value)
         {
@@ -52,12 +55,15 @@ namespace WinRT_RichTextBlock.Html2Xaml
 
         private static async void HtmlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+
             // Get the target RichTextBlock
             RichTextBlock richText = d as RichTextBlock;
             if (richText == null) return;
 
             // Wrap the value of the Html property in a div and convert it to a new RichTextBlock
+
             string xhtml = string.Format("<div>{0}</div>", e.NewValue as string);
+
             xhtml = xhtml.Replace("\r", "").Replace("\n", "<br />");
             RichTextBlock newRichText = null;
             if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
@@ -71,6 +77,7 @@ namespace WinRT_RichTextBlock.Html2Xaml
                 }
                 catch (Exception ex)
                 {
+
                     string errorxaml = string.Format(@"
                         <RichTextBlock 
                          xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'
@@ -102,6 +109,9 @@ namespace WinRT_RichTextBlock.Html2Xaml
                 }
                 catch (Exception ex)
                 {
+
+
+
                     string errorxaml = string.Format(@"
                         <RichTextBlock 
                          xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'
@@ -141,23 +151,40 @@ namespace WinRT_RichTextBlock.Html2Xaml
 
         private static async Task<string> ConvertHtmlToXamlRichTextBlock(string xhtml)
         {
+
+
             // Load XHTML fragment as XML document
             XmlDocument xhtmlDoc = new XmlDocument();
             xhtmlDoc.LoadXml(xhtml);
 
             if (Html2XamlProcessor == null)
             {
+
+
+                var xsldocument = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///RichTextBlock.Html2Xaml/RichTextBlockHtml2Xaml.xslt"));
+
+                XmlDocument html2Xamlxsldoc = await XmlDocument.LoadFromFileAsync(xsldocument);
+
+
+                Html2XamlProcessor = new XsltProcessor(html2Xamlxsldoc);
+
+
+                //I can't get this part to work, so we've gone back to Build Action Content
                 // Read XSLT. In design mode we cannot access the xslt from the file system (with Build Action = Content), 
                 // so we use it as an embedded resource instead:
+                /**
                 Assembly assembly = typeof(Properties).GetTypeInfo().Assembly;
-                using (Stream stream = assembly.GetManifestResourceStream("WinRT_RichTextBlock.Html2Xaml.RichTextBlockHtml2Xaml.xslt"))
+                using (Stream stream = assembly.GetManifestResourceStream("RichTextBlockHtml2Xaml.xslt"))
                 {
                     StreamReader reader = new StreamReader(stream);
                     string content = await reader.ReadToEndAsync();
                     XmlDocument html2XamlXslDoc = new XmlDocument();
                     html2XamlXslDoc.LoadXml(content);
                     Html2XamlProcessor = new XsltProcessor(html2XamlXslDoc);
-                }
+                }**/
+
+  
+
             }
 
             // Apply XSLT to XML
@@ -167,3 +194,4 @@ namespace WinRT_RichTextBlock.Html2Xaml
 
     }
 }
+
