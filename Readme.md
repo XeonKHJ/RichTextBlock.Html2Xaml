@@ -30,7 +30,7 @@ modified easily: one C# and one XSLT source file, no binaries.
 
 ## Distribution: NuGet
 
-The UWP fork does not have a NuGet package yet, partly because I don't really know how to work with NuGet yet. If anyone wants to contribute to update the NuGet related files to UWP, that would be great
+The UWP fork does not have a NuGet package yet, partly because I don't really know how to work with NuGet yet. If anyone wants to contribute to update the NuGet related files this project, that would be great
 
 ## Usage
 1) In a XAML file, declare the namespace of the Common folder in your project, e.g.:
