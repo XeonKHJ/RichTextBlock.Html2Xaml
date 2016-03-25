@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinRT-RichTextBlock.Html2Xaml", "WinRT-RichTextBlock.Html2Xaml.csproj", "{F0ECB5DE-39E9-41E3-AB8C-90E1798ADF0A}"
-EndProject
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C91A7CAF-D320-489E-86B9-6E5A60B18F68}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub", "GitHub", "{A37EF2FB-5F4A-4674-83A2-A9346328F4DA}"
@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NuGet", "NuGet", "{7EEBE2BA
 		NuGet\RichTextBlock.Html2Xaml.nuspec = NuGet\RichTextBlock.Html2Xaml.nuspec
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichTextBlock.Html2Xaml", "RichTextBlock.Html2Xaml.csproj", "{D3408113-4EF7-4056-9EC9-D383306514B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,22 +35,22 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F0ECB5DE-39E9-41E3-AB8C-90E1798ADF0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F0ECB5DE-39E9-41E3-AB8C-90E1798ADF0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F0ECB5DE-39E9-41E3-AB8C-90E1798ADF0A}.Debug|ARM.ActiveCfg = Debug|ARM
-		{F0ECB5DE-39E9-41E3-AB8C-90E1798ADF0A}.Debug|ARM.Build.0 = Debug|ARM
-		{F0ECB5DE-39E9-41E3-AB8C-90E1798ADF0A}.Debug|x64.ActiveCfg = Debug|x64
-		{F0ECB5DE-39E9-41E3-AB8C-90E1798ADF0A}.Debug|x64.Build.0 = Debug|x64
-		{F0ECB5DE-39E9-41E3-AB8C-90E1798ADF0A}.Debug|x86.ActiveCfg = Debug|x86
-		{F0ECB5DE-39E9-41E3-AB8C-90E1798ADF0A}.Debug|x86.Build.0 = Debug|x86
-		{F0ECB5DE-39E9-41E3-AB8C-90E1798ADF0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F0ECB5DE-39E9-41E3-AB8C-90E1798ADF0A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F0ECB5DE-39E9-41E3-AB8C-90E1798ADF0A}.Release|ARM.ActiveCfg = Release|ARM
-		{F0ECB5DE-39E9-41E3-AB8C-90E1798ADF0A}.Release|ARM.Build.0 = Release|ARM
-		{F0ECB5DE-39E9-41E3-AB8C-90E1798ADF0A}.Release|x64.ActiveCfg = Release|x64
-		{F0ECB5DE-39E9-41E3-AB8C-90E1798ADF0A}.Release|x64.Build.0 = Release|x64
-		{F0ECB5DE-39E9-41E3-AB8C-90E1798ADF0A}.Release|x86.ActiveCfg = Release|x86
-		{F0ECB5DE-39E9-41E3-AB8C-90E1798ADF0A}.Release|x86.Build.0 = Release|x86
+		{D3408113-4EF7-4056-9EC9-D383306514B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3408113-4EF7-4056-9EC9-D383306514B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3408113-4EF7-4056-9EC9-D383306514B8}.Debug|ARM.ActiveCfg = Debug|ARM
+		{D3408113-4EF7-4056-9EC9-D383306514B8}.Debug|ARM.Build.0 = Debug|ARM
+		{D3408113-4EF7-4056-9EC9-D383306514B8}.Debug|x64.ActiveCfg = Debug|x64
+		{D3408113-4EF7-4056-9EC9-D383306514B8}.Debug|x64.Build.0 = Debug|x64
+		{D3408113-4EF7-4056-9EC9-D383306514B8}.Debug|x86.ActiveCfg = Debug|x86
+		{D3408113-4EF7-4056-9EC9-D383306514B8}.Debug|x86.Build.0 = Debug|x86
+		{D3408113-4EF7-4056-9EC9-D383306514B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3408113-4EF7-4056-9EC9-D383306514B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3408113-4EF7-4056-9EC9-D383306514B8}.Release|ARM.ActiveCfg = Release|ARM
+		{D3408113-4EF7-4056-9EC9-D383306514B8}.Release|ARM.Build.0 = Release|ARM
+		{D3408113-4EF7-4056-9EC9-D383306514B8}.Release|x64.ActiveCfg = Release|x64
+		{D3408113-4EF7-4056-9EC9-D383306514B8}.Release|x64.Build.0 = Release|x64
+		{D3408113-4EF7-4056-9EC9-D383306514B8}.Release|x86.ActiveCfg = Release|x86
+		{D3408113-4EF7-4056-9EC9-D383306514B8}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
