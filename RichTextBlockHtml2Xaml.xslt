@@ -72,6 +72,11 @@
       <xsl:value-of select="."/>
     </Run>
   </xsl:template>
+  <xsl:template match="CODE | code">
+    <Run FontFamily="Courier New" >
+      <xsl:value-of select="."/>
+    </Run>
+  </xsl:template>
   
   <xsl:template match="BR | br" priority="0" >
     <LineBreak />
