@@ -1,10 +1,10 @@
-NuGet package: [http://nuget.org/packages/RichTextBlock.Html2Xaml](http://nuget.org/packages/RichTextBlock.Html2Xaml)
-
 # RichTextBlock.Html2Xaml
 
 ## Introduction
 
-The WinRT RichTextBlock control serves to display read-only rich formatted text.
+This is a fork of MacawNL/WinRT-RichTextBlock.Html2Xaml. It has been changed to a Windows runtime Component, making it usable with all languages, including C++. In addition, I have assured it works with UWP. 
+
+The UWP RichTextBlock control serves to display read-only rich formatted text.
 However, it supports a limited subset of XAML, and no HTML.
 
 In scenario's where you want to display a field that contains HTML rich 
@@ -29,17 +29,12 @@ The extension property is implemented in two simple source files that can be
 modified easily: one C# and one XSLT source file, no binaries.
 
 ## Distribution: NuGet
-**RichTextBlock.Html2Xaml** is distributed as a [NuGet](http://nuget.org/packages/RichTextBlock.Html2Xaml) 
-package. The package is named **RichTextBlock.Html2Xaml**. The 
-**RichTextBlock.Html2Xaml** NuGet package places two files in your Windows 
-Store project, in the Common folder:
 
-- `Common\RichTextBlockHtml2Xaml.xslt`
-- `Common\RichTextBlockProperties.cs`
+The UWP fork does not have a NuGet package yet, partly because I don't really know how to work with NuGet yet. If anyone wants to contribute to update the NuGet related files this project, that would be great
 
 ## Usage
 1) In a XAML file, declare the namespace of the Common folder in your project, e.g.:
-   `xmlns:common="using:WinRT_RichTextBlock.Html2Xaml.Common"`
+   `xmlns:common="using:Html2Xaml"`
     
 2) In RichTextBlock controls, set or databind the Html property, e.g.:
   > `<RichTextBlock common:Properties.Html="{Binding ...}"/>` or
