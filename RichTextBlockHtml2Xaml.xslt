@@ -60,7 +60,7 @@
     <Bold><xsl:apply-templates /></Bold>
   </xsl:template>
 
-  <xsl:template match="I | i">
+  <xsl:template match="I | i | EM | em">
     <Italic><xsl:apply-templates /></Italic>
   </xsl:template>
 
@@ -75,7 +75,7 @@
   <xsl:template match="A | a">
     <Span><InlineUIContainer><HyperlinkButton Style="{{StaticResource Link}}"><xsl:attribute name="NavigateUri"><xsl:value-of select="@href"/></xsl:attribute><xsl:apply-templates /></HyperlinkButton></InlineUIContainer></Span>
   </xsl:template>
-
+ 
   <xsl:template match="IMG | img">
     <Span><InlineUIContainer><Image Stretch="None" ><xsl:attribute name="Source"><xsl:value-of select="@src"/></xsl:attribute><xsl:apply-templates /></Image></InlineUIContainer></Span>
   </xsl:template>
