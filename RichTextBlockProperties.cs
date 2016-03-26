@@ -17,7 +17,7 @@ namespace html2xaml
     /// <summary>
     /// Usage: 
     /// 1) In a XAML file, declare the above namespace, e.g.:
-    ///    xmlns:common="using:RichTextBlock.Html2Xaml"
+    ///    xmlns:common="using:html2xaml"
     ///     
     /// 2) In RichTextBlock controls, set or databind the Html property, e.g.:
     /// 

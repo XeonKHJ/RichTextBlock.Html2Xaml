@@ -67,11 +67,16 @@
   <xsl:template match="U | u">
     <Underline><xsl:apply-templates /></Underline>
   </xsl:template>
-
+  <xsl:template match="SUP | sup">
+    <Run Typography.Variants="Superscript">
+      <xsl:value-of select="."/>
+    </Run>
+  </xsl:template>
+  
   <xsl:template match="BR | br" priority="0" >
     <LineBreak />
   </xsl:template>
-
+  
   <xsl:template match="A | a">
     <Span><InlineUIContainer><HyperlinkButton Style="{{StaticResource Link}}"><xsl:attribute name="NavigateUri"><xsl:value-of select="@href"/></xsl:attribute><xsl:apply-templates /></HyperlinkButton></InlineUIContainer></Span>
   </xsl:template>
