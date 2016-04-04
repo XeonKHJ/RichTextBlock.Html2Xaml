@@ -162,18 +162,17 @@ namespace html2xaml
             {
 
 
-                var xsldocument = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///html2xaml/RichTextBlockHtml2Xaml.xslt"));
+                //var xsldocument = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///html2xaml/RichTextBlockHtml2Xaml.xslt"));
 
-                XmlDocument html2Xamlxsldoc = await XmlDocument.LoadFromFileAsync(xsldocument);
-
-
-                Html2XamlProcessor = new XsltProcessor(html2Xamlxsldoc);
+                //XmlDocument html2Xamlxsldoc = await XmlDocument.LoadFromFileAsync(xsldocument);
 
 
-                //I can't get this part to work, so we've gone back to Build Action Content
+                //Html2XamlProcessor = new XsltProcessor(html2Xamlxsldoc);
+
+
+           
                 // Read XSLT. In design mode we cannot access the xslt from the file system (with Build Action = Content), 
                 // so we use it as an embedded resource instead:
-                /**
                 Assembly assembly = typeof(Properties).GetTypeInfo().Assembly;
                 using (Stream stream = assembly.GetManifestResourceStream("RichTextBlockHtml2Xaml.xslt"))
                 {
@@ -182,7 +181,7 @@ namespace html2xaml
                     XmlDocument html2XamlXslDoc = new XmlDocument();
                     html2XamlXslDoc.LoadXml(content);
                     Html2XamlProcessor = new XsltProcessor(html2XamlXslDoc);
-                }**/
+                }
 
   
 

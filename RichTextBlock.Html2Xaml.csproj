@@ -112,9 +112,9 @@
     <Compile Include="RichTextBlockProperties.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="RichTextBlockHtml2Xaml.xslt">
+    <EmbeddedResource Include="RichTextBlockHtml2Xaml.xslt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
     <Content Include="Test\Test.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
