@@ -42,7 +42,7 @@ namespace html2xaml
     {
         public static DependencyProperty HtmlProperty { get { return __htmlproperty; } }
         private static DependencyProperty __htmlproperty = null;
-        public void registerhtmlproperty()
+        public static void registerhtmlproperty()
         {
             if (__htmlproperty == null)
                 __htmlproperty = DependencyProperty.RegisterAttached("Html", typeof(string), typeof(Properties), new PropertyMetadata(null, HtmlChanged));
