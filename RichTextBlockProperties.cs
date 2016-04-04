@@ -40,7 +40,8 @@ namespace html2xaml
     /// </summary>
     public sealed class Properties : DependencyObject
     {
-        public static DependencyProperty HtmlProperty { get { return DependencyProperty.RegisterAttached("Html", typeof(string), typeof(Properties), new PropertyMetadata(null, HtmlChanged)); } }
+        public static readonly DependencyProperty HtmlProperty =
+            DependencyProperty.RegisterAttached("Html", typeof(string), typeof(Properties), new PropertyMetadata(null, HtmlChanged));
 
 
         public static void SetHtml(DependencyObject obj, string value)
