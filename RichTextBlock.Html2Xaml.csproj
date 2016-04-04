@@ -114,6 +114,7 @@
   <ItemGroup>
     <Content Include="RichTextBlockHtml2Xaml.xslt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Test\Test.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
