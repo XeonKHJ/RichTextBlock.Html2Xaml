@@ -39,7 +39,7 @@
     <Paragraph><xsl:apply-templates /></Paragraph>
   </xsl:template>
   <xsl:template match="P | p" priority="0">
-    <Span><xsl:apply-templates /></Span>
+    <Span><LineBreak /><xsl:apply-templates /><LineBreak /></Span>
   </xsl:template>
 
   <!-- The RichTextBlock XAML element can contain only paragraph child elements, so any unknown html child elements of the root element will become XAML paragraphs -->
