@@ -54,7 +54,7 @@
             <xsl:value-of select="@font-color"/>
           </xsl:attribute>
         </xsl:if>
-        <LineBreak /><xsl:apply-templates />
+        <xsl:apply-templates />
       </Span>
     </xsl:template>
 
