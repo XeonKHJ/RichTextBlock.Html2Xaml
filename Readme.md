@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is a fork of MacawNL/WinRT-RichTextBlock.Html2Xaml. It has been changed to a Windows runtime Component, making it usable with all languages, including C++. In addition, I have assured it works with UWP. 
+This is a fork of MacawNL/WinRT-RichTextBlock.Html2Xaml. It has been changed to a Windows runtime Component, making it usable with all languages, including C++. In addition, I have assured it works with UWP (Win10). 
 
 The UWP RichTextBlock control serves to display read-only rich formatted text.
 However, it supports a limited subset of XAML, and no HTML.
@@ -33,10 +33,27 @@ modified easily: one C# and one XSLT source file, no binaries.
 The UWP fork does not have a NuGet package yet, partly because I don't really know how to work with NuGet yet. If anyone wants to contribute to update the NuGet related files this project, that would be great
 
 ## Usage
-1) In a XAML file, declare the namespace of the Common folder in your project, e.g.:
+
+* Choose which style to put in your solution
+
+   1) Class Library: This should work with C# and VB, maybe C++/cx if you add .NET stuff
+
+   2) Universal: Works with all languages out of the box, but isn't the optimal solution
+   
+   3) C++/CX style: Works with all languages, but you have to add a line of code to your app's Constructor
+
+###Steps to implement
+
+1) Checkout the branch you want using git. If you are using class library, checkout the `ClassLibrary` branch. If you're using the Universal method, checkout the `master` branch. If you're using C++/CX style, checkout the `cxx_style` branch.
+
+2) Add the project to your solution (RichTextBlock.Html2Xaml.csproj).
+
+3) Make your project reference the RichTextBlock.Html2Xaml project
+
+4) In a XAML file, declare the namespace of the Common folder in your project, e.g.:
    `xmlns:common="using:Html2Xaml"`
     
-2) In RichTextBlock controls, set or databind the Html property, e.g.:
+5) In RichTextBlock controls, set or databind the Html property, e.g. (the second method may not work with the Universal method):
   > `<RichTextBlock common:Properties.Html="{Binding ...}"/>` or
 `    <RichTextBlock>
  		<common:Properties.Html>
@@ -51,3 +68,5 @@ The UWP fork does not have a NuGet package yet, partly because I don't really kn
  		</common:Properties.Html>
     </RichTextBlock>
 `
+
+6) If you're using the C++/cx style, go to your App's constructor (should be in App.xaml.cs or App.xaml.cpp) and add `html2xaml::Properties::registerhtmlproperty();` or `html2xaml.Properties.registerhtmlproperty();` depending on which language you are using. 
