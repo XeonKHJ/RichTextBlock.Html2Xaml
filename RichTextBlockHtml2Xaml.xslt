@@ -8,39 +8,72 @@
 >
   <xsl:output method="xml" indent="yes"/>
 
-  <!-- The html root element must be div, it translates to a xaml richtextblock.-->
-  <xsl:template match="/div" priority="9">
-    <RichTextBlock>
-      <RichTextBlock.Resources>
-        <Style x:Key="Bullet" TargetType="Ellipse">
-          <Setter Property="Fill" Value="Black" />
-          <Setter Property="Width" Value="6" />
-          <Setter Property="Height" Value="6" />
-          <Setter Property="Margin" Value="-30,0,0,1" />
-        </Style>
-        <Style x:Key="Link" TargetType="HyperlinkButton">
-          <Setter Property="BorderThickness" Value="0" />
-          <Setter Property="FontSize" Value="11" />
-          <Setter Property="Margin" Value="-15,-11" />
-        </Style>
-      </RichTextBlock.Resources>
-      <xsl:if test="normalize-space(text()) != ''">
-        <Paragraph><xsl:value-of select="normalize-space(text())" /></Paragraph>
-      </xsl:if>
-      <xsl:apply-templates select="/div/*" />
-    </RichTextBlock>
-  </xsl:template>
-  <xsl:template match="div" priority="0">
-    <Span><xsl:apply-templates /></Span>
-  </xsl:template>
 
-  <!-- XAML Paragraphs cannot contain paragraphs, so we convert top-level html paragraphs to xaml paragraphs and convert nested html paragraphs to xaml spans with linebreaks -->
-  <xsl:template match="/div/P | /div/p" priority="9">
-    <Paragraph><xsl:apply-templates /></Paragraph>
+    <!-- The html root element must be div, it translates to a xaml richtextblock.-->
+    <xsl:template match="/div" priority="9">
+      <RichTextBlock>
+        <RichTextBlock.Resources>
+          <Style x:Key="Bullet" TargetType="Ellipse">
+            <Setter Property="Fill" Value="Black" />
+            <Setter Property="Width" Value="6" />
+            <Setter Property="Height" Value="6" />
+            <Setter Property="Margin" Value="-30,0,0,1" />
+          </Style>
+          <Style x:Key="Link" TargetType="HyperlinkButton">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="Margin" Value="-15,-11" />
+          </Style>
+        </RichTextBlock.Resources>
+        <xsl:if test="normalize-space(text()) != ''">
+          <Paragraph><xsl:value-of select="normalize-space(text())" /></Paragraph>
+        </xsl:if>
+        <xsl:apply-templates select="/div/*" />
+      </RichTextBlock>
+    </xsl:template>
+    <xsl:template match="div" priority="0">
+      <Span><xsl:apply-templates /></Span>
+    </xsl:template>
+
+  
+    <!-- XAML Paragraphs cannot contain paragraphs, so we convert top-level html paragraphs to xaml paragraphs and convert nested html paragraphs to xaml spans with linebreaks -->
+    <xsl:template match="/div/P | /div/p" priority="9">
+      <Paragraph>
+        <xsl:if test="@font-color">
+          <xsl:attribute name="Foreground">
+            <xsl:value-of select="@font-color"/>
+          </xsl:attribute>
+        </xsl:if>
+        <xsl:apply-templates />
+      </Paragraph>
+    </xsl:template>
+    <xsl:template match="P | p" priority="0">
+      <Span>
+        <xsl:if test="@font-color">
+          <xsl:attribute name="Foreground">
+            <xsl:value-of select="@font-color"/>
+          </xsl:attribute>
+        </xsl:if>
+        <xsl:apply-templates />
+      </Span>
+    </xsl:template>
+
+  <xsl:template match="SPAN | span">
+    <Span>
+      <xsl:if test="@font-color">
+        <xsl:attribute name="Foreground">
+          <xsl:value-of select="@font-color"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates/>
+    </Span>
   </xsl:template>
-  <xsl:template match="P | p" priority="0">
-    <Span><xsl:apply-templates /></Span>
-  </xsl:template>
+  
+    <!-- The RichTextBlock XAML element can contain only paragraph child elements, so any unknown html child elements of the root element will become XAML paragraphs -->
+    <xsl:template match="/div/*">
+      <Paragraph><xsl:apply-templates /></Paragraph>
+    </xsl:template>
+
 
   <!-- The RichTextBlock XAML element can contain only paragraph child elements, so any unknown html child elements of the root element will become XAML paragraphs -->
   <xsl:template match="/div/*">
