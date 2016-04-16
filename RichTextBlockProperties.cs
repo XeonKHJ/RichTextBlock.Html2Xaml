@@ -65,6 +65,9 @@ namespace html2xaml
             string xhtml = string.Format("<div>{0}</div>", e.NewValue as string);
 
             xhtml = xhtml.Replace("\r", "").Replace("\n", "<br />");
+            //Decode the xhtml to take care of special character entity references e.g. &copy; &euro;
+            //which are not supported by Xml.
+            xhtml = System.Net.WebUtility.HtmlDecode(xhtml);
             RichTextBlock newRichText = null;
             if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
             {
